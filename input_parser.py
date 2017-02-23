@@ -2,25 +2,25 @@
 
 class Video:
     def __init__(self, number, size):
-    	self.number = number
-    	self.size = size
+    	self.number = int(number)
+    	self.size = int(size)
 
 class Endpoint:
     def __init__(self, number, datacenter_latency):
-    	self.number = number
-    	self.datacenter_latency = datacenter_latency
+    	self.number = int(number)
+    	self.datacenter_latency = int(datacenter_latency)
     	self.caches = []
 
 class CacheConnection:
     def __init__(self, cache_number, latency):
-    	self.cache_number = cache_number
-    	self.latency = latency
+    	self.cache_number = int(cache_number)
+    	self.latency = int(latency)
 
 class Request:
 	def __init__(self, amount, to_video, from_endpoint):
-		self.amount = amount
-		self.to_video = to_video
-		self.from_endpoint = from_endpoint
+		self.amount = int(amount)
+		self.to_video = int(to_video)
+		self.from_endpoint = int(from_endpoint)
 # -------------
 
 # Getting how many things there are of each
