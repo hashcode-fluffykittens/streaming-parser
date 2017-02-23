@@ -22,6 +22,9 @@ class CacheConnection:
 		self.cache_number = cache_number
 		self.latency = latency
 
+	def __repr__(self):
+		return "cache_number: %s, latency: %s" % (self.cache_number, self.latency)
+
 class Request:
 	def __init__(self, amount, to_video, from_endpoint):
 		self.amount = amount
