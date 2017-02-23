@@ -24,10 +24,10 @@ class Request:
 # -------------
 
 # Getting how many things there are of each
-n_videos, n_endpoints, n_requests, n_caches, size_caches = input().split(" ")
+n_videos, n_endpoints, n_requests, n_caches, size_caches = raw_input().split(" ")
 
 # Getting videos
-video_sizes = input().split(" ")
+video_sizes = raw_input().split(" ")
 videos = []
 for video_number, video_size in enumerate(video_sizes):
 	videos.append(Video(video_number, video_size))
@@ -35,10 +35,10 @@ for video_number, video_size in enumerate(video_sizes):
 # Getting endpoints and connections to cache
 endpoints = []
 for i in range(int(n_endpoints)):
-	datacenter_latency, n_connected_caches = input().split(" ")
+	datacenter_latency, n_connected_caches = raw_input().split(" ")
 	endpoint = Endpoint(i, datacenter_latency)
 	for j in range(int(n_connected_caches)):
-		cache_number, latency = input().split(" ")
+		cache_number, latency = raw_input().split(" ")
 		endpoint.caches.append(CacheConnection(cache_number, latency))
 
 	endpoints.append(endpoint)
@@ -46,7 +46,7 @@ for i in range(int(n_endpoints)):
 # Getting all requests
 requests = []
 for i in range(int(n_requests)):
-	video_number, endpoint_number, latency = input().split(" ")
+	video_number, endpoint_number, latency = raw_input().split(" ")
 	requests.append(Request(latency, videos[int(video_number)], endpoints[int(endpoint_number)]))
 
 print(videos, endpoints, requests)
