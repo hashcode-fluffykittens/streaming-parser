@@ -23,30 +23,40 @@ class Request:
 		self.from_endpoint = from_endpoint
 # -------------
 
-# Getting how many things there are of each
-n_videos, n_endpoints, n_requests, n_caches, size_caches = raw_input().split(" ")
+class InputParser():
+	def parse(self):
+		# Getting how many things there are of each
+		self.n_videos, self.n_endpoints, self.n_requests, self.n_caches, self.size_caches = input().split(" ")
 
-# Getting videos
-video_sizes = raw_input().split(" ")
-videos = []
-for video_number, video_size in enumerate(video_sizes):
-	videos.append(Video(video_number, video_size))
+		# Getting videos
+		self.video_sizes = input().split(" ")
+		self.videos = []
+		for video_number, video_size in enumerate(self.video_sizes):
+			self.videos.append(Video(video_number, video_size))
 
-# Getting endpoints and connections to cache
-endpoints = []
-for i in range(int(n_endpoints)):
-	datacenter_latency, n_connected_caches = raw_input().split(" ")
-	endpoint = Endpoint(i, datacenter_latency)
-	for j in range(int(n_connected_caches)):
-		cache_number, latency = raw_input().split(" ")
-		endpoint.caches.append(CacheConnection(cache_number, latency))
+		# Getting endpoints and connections to cache
+		self.endpoints = []
+		for i in range(int(self.n_endpoints)):
+			datacenter_latency, n_connected_caches = input().split(" ")
+			endpoint = Endpoint(i, datacenter_latency)
+			for j in range(int(n_connected_caches)):
+				cache_number, latency = input().split(" ")
+				endpoint.caches.append(CacheConnection(cache_number, latency))
 
-	endpoints.append(endpoint)
+			self.endpoints.append(endpoint)
 
-# Getting all requests
-requests = []
-for i in range(int(n_requests)):
-	video_number, endpoint_number, latency = raw_input().split(" ")
-	requests.append(Request(latency, videos[int(video_number)], endpoints[int(endpoint_number)]))
+		# Getting all requests
+		self.requests = []
+		for i in range(int(self.n_requests)):
+			video_number, endpoint_number, latency = input().split(" ")
+			self.requests.append(Request(latency, self.videos[int(video_number)], self.endpoints[int(endpoint_number)]))
 
-print(videos, endpoints, requests)
+		print(self.videos, self.endpoints, self.requests)
+
+
+def main():
+	parser = InputParser()
+	parser.parse()
+
+if __name__ == '__main__':
+	main()
