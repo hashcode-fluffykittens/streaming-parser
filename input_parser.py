@@ -1,26 +1,36 @@
 # ----- CLASSES
 
 class Video:
-    def __init__(self, number, size):
-    	self.number = number
-    	self.size = size
+	def __init__(self, number, size):
+		self.number = number
+		self.size = size
+
+	def __repr__(self):
+		return "number: %s, size: %s" % (self.number, self.size)
 
 class Endpoint:
-    def __init__(self, number, datacenter_latency):
-    	self.number = number
-    	self.datacenter_latency = datacenter_latency
-    	self.caches = []
+	def __init__(self, number, datacenter_latency):
+		self.number = number
+		self.datacenter_latency = datacenter_latency
+		self.caches = []
+
+	def __repr__(self):
+		return "number: %s, datacenter_latency: %s, caches: %s" % (self.number, self.datacenter_latency, self.caches)
 
 class CacheConnection:
-    def __init__(self, cache_number, latency):
-    	self.cache_number = cache_number
-    	self.latency = latency
+	def __init__(self, cache_number, latency):
+		self.cache_number = cache_number
+		self.latency = latency
 
 class Request:
 	def __init__(self, amount, to_video, from_endpoint):
 		self.amount = amount
 		self.to_video = to_video
 		self.from_endpoint = from_endpoint
+
+	def __repr__(self):
+		return "amount: %s, to_video: %s, from_endpoint: %s" % (self.amount, self.to_video, self.from_endpoint)
+
 # -------------
 
 class InputParser():
